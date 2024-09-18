@@ -2,10 +2,19 @@ import "dotenv/config";
 import "express-async-errors";
 import cors from "cors";
 import express, { NextFunction, Request, Response } from "express";
+import session from "express-session";
 import { routes } from "./routes";
 import { AppError } from "./errors/AppError";
 
 const app = express();
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "wlg2KxT9annH3a5HMPQUBmY7ZdJquZ87",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.use(cors());
 app.use(express.json());
