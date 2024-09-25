@@ -2,8 +2,8 @@ import { google } from "googleapis";
 import { oAuth2Client } from "../../../config/oAuth";
 import { CreatEventDTO } from "../dtos/calendar";
 
-export class CreatCalendarEventUseCase {
-  constructor() {}
+export class UpdateCalendarEventUseCase {
+  contructor() {}
 
   async execute({
     summary,
@@ -14,9 +14,10 @@ export class CreatCalendarEventUseCase {
   }: CreatEventDTO) {
     const calendar = google.calendar("v3");
 
-    const response = await calendar.events.insert({
+    const response = await calendar.events.patch({
       auth: oAuth2Client,
       calendarId: "primary",
+      eventId: "7611b57d68",
       requestBody: {
         id: "7611b57d68",
         summary,
