@@ -14,7 +14,7 @@ export class CreatCalendarEventController {
       return res.status(200).json(result);
     } catch (error) {
       console.error("Error creating event: ", error);
-      res.status(500).json({ error });
+      return res.status(500).json({ error });
     }
   }
 }
